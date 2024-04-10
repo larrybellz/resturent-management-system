@@ -1,0 +1,47 @@
+{%extends 'base.html'%}
+{%block style%}
+<style>
+    .con{
+        width: 100%;
+        margin-top:10px;
+        background-color: rgb(124, 144, 144);
+        border-radius: 5px;
+    }
+    .itemName{
+        width: 100%;
+        padding: 5px;
+        border-radius: 10px;
+    }
+    .itemDescription{
+        border-radius: 10px;
+    }
+
+
+
+</style>
+
+{%endblock%}
+{%block content%}
+    <div class="container-fluid con">
+        
+
+        <h1 class="mb-6 text-2xl ">New Item</h1>
+        <form action="" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+       <!--<div>
+            <label><strong>Item Name</strong> </label>
+            {{form.name}}
+        
+        </div>
+        <br>
+        <div>
+            <label><strong>Description</strong></label>
+            {{form.description}}
+        
+        </div>--> 
+            <button class="btn btn-success" type="submit">save</button>
+
+        </form>
+    </div>
+{%endblock%}

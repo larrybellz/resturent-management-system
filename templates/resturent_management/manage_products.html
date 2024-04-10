@@ -1,0 +1,56 @@
+{%extends 'base.html'%}
+{%block content%}
+
+    <h1>Manage <small>Products</small></h1>
+    {% include 'partials/_messages.html'%}
+   
+    <div class=''>
+        <a class="btn btn-primary" href="{%url 'createStock'%}">Add Product</a>
+        <a class="btn btn-success" href='' >View Product</a>
+    </div>
+    <br>
+    <div class="container fluid padding-10px border">
+        <h3>Manage Products</h3>
+        <br>
+        
+    <table class="table table-striped ">
+        <thead>
+          <tr>
+            <th>name</th>
+            <th>price</th>
+            <th>description</th>
+            <th>status</th>
+            <th>action</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in items %}
+          <tr>
+            <td>{{item.name}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.description}}</td>
+            <td class="btn btn-success">active</td>
+            <td class="btn-danger">delete</td>
+          </tr>
+          {% endfor %}
+          <tr>
+            <td>Mary</td>
+            <td>Moe</td>
+            <td>mary@example.com</td>
+            <td class="btn btn-success">active</td>
+            <td class="btn-danger">delete</td>
+          </tr>
+          <tr>
+            <td>July</td>
+            <td>Dooley</td>
+            <td>july@example.com</td>
+            <td class="btn btn-success">active</td>
+            <td class=''>delete</td>
+          </tr>
+        </tbody>
+      </table>
+      
+    </div>
+
+{%endblock%}

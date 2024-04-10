@@ -1,0 +1,51 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="keywords" content="resto food,best food,top restuarent">
+	<title>restuarent website</title>
+	<link rel='stylesheet' type="text/css" href="{% static 'css/indexk.css'%}">
+	<link rel='stylesheet' type="text/css" href="{% static 'css/font-awesome.min.css'%}">
+
+	<script src="https://kit.fontawesome.com/5441a2266d.js" crossorigin="anonymous"></script>
+</head>
+<body>
+	
+	<header>
+		<section class="container">
+				
+				
+				<a href="#" class="logo"><i class="fas fa-utensils"></i>resto.</a>
+				
+				<nav clas="nav">
+					<a id="current" href="#">Home</a>
+					<a href="#">Dishes</a>
+					<a href="#">About</a> 
+					<a href="#">Menu</a>
+					
+					<a href="#">Order</a>
+				  
+				</nav>
+				<div class="icons">
+					<i id='bars' class="fas fa-bars" id="bars"></i>
+					<i class="fas fa-search">
+						
+					</i>
+					<a href="#" class="fas fa-heart"></a>
+					<a href="#" class="fas fa-shopping-cart"></a>
+				</div>
+				
+
+		</section>
+
+		
+	</header>
+
+	{% block content%}
+	{%endblock%}
+	
+
+</body>
+</html>
