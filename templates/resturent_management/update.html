@@ -9,15 +9,7 @@
         background-color: #d3eeee;
         border-radius: 5px;
     }
-    input{
-        background-color: whitesmoke;
-        width: 100%;
-        padding: 5px;
-        border-radius: 2px;
-    }
-    .itemDescription{
-        border-radius: 10px;
-    }
+
 
     input,textarea{
         background-color:whitesmoke;
@@ -26,6 +18,7 @@
        
         border-radius: 2px;
     }
+    
 
 
 
@@ -33,14 +26,13 @@
 
 {%endblock%}
 {%block content%}
-    <div class="container-fluid con">
+    <div class="container-fluid con ">
         
 
         <h1 class="mb-6 text-2xl ">New Item</h1>
         <form action="" method="post">
         {% csrf_token %}
-        
-       <div>
+        <div>
             <label><strong>Item Name</strong> </label>
             <br>
             {{form.name}}
@@ -54,18 +46,13 @@
         </div>
         <br>
         <div>
-            <label><strong>Item Price</strong> </label>
-            <br>
-            {{form.category}}
-        
-        </div>
-        <br>
-        <div>
             <label><strong>Description</strong></label>
+            <br>
             {{form.description}}
         
         </div>
-            <button class="btn btn-success" type="submit">save</button>
+
+            <button class="btn btn-outline-success" type="submit">save</button>
             <a class="btn btn-outline-info" href="{% url 'stock-list' %}" >back</a>
 
         </form>

@@ -2,11 +2,30 @@
 {%block content%}
 
     <h1>Manage <small>Products</small></h1>
-    {% include 'partials/_messages.html'%}
+    
    
     <div class=''>
         <a class="btn btn-primary" href="{%url 'createStock'%}">Add Product</a>
-        <a class="btn btn-success" href='' >View Product</a>
+        <div class="drop btn btn-primary">
+          <ul>
+              <li>
+                  <a href="#">Categories</a>
+                  
+                  <ul>
+                    {%for category in items%}
+                      <li><a href="">{{category.name}}</a></li>
+                    {%endfor%}
+                      <li><a href="">cat1 catalogostic info</a></li>
+                      <li><a href="">cat1</a></li>
+                      <li><a href="">cat1</a></li>
+                  </ul>
+                  
+  
+              </li>
+          </ul>
+  
+        </div>
+     
     </div>
     <br>
     <div class="container fluid padding-10px border">
@@ -30,24 +49,13 @@
             <td>{{item.name}}</td>
             <td>{{item.price}}</td>
             <td>{{item.description}}</td>
-            <td class="btn btn-success">active</td>
-            <td class="btn-danger">delete</td>
+            <td> <div class="btn btn-outline-success"><a href="{%url 'stock-detail' item.id%}">view</a></div></td>
+            <td><div class="btn btn-outline-danger">
+              <a href="{%url 'delete' item.id %}">delete</a></div></td>
           </tr>
           {% endfor %}
-          <tr>
-            <td>Mary</td>
-            <td>Moe</td>
-            <td>mary@example.com</td>
-            <td class="btn btn-success">active</td>
-            <td class="btn-danger">delete</td>
-          </tr>
-          <tr>
-            <td>July</td>
-            <td>Dooley</td>
-            <td>july@example.com</td>
-            <td class="btn btn-success">active</td>
-            <td class=''>delete</td>
-          </tr>
+         
+          
         </tbody>
       </table>
       

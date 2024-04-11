@@ -1,0 +1,59 @@
+{%extends 'base.html'%}
+{%block content%}
+
+    <h1>Manage <small>Products</small></h1>
+    
+   
+    <div class=''>
+        <a class="btn btn-primary" href="{%url 'create-category'%}">Add category</a>
+        <div class="dropdown" style="display: inline;">
+          <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">dishes</button>
+          <ul class="dropdown-menu" role="menu">
+              <li><a href="#">
+                  car
+              </a></li>
+              <li><a href="#">
+                  cara
+              </a></li>
+              <li><a href="#">
+                  car
+              </a></li>
+          </ul>
+        </div>
+  
+     
+    </div>
+    <br>
+    <div class="container fluid padding-10px border">
+        <h3>Manage Categories</h3>
+        <br>
+        
+    <table class="table table-striped ">
+        <thead>
+          <tr>
+            <th>name</th>
+            <th>description</th>
+            <th>status</th>
+            <th>action</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          {% for category in categories %}
+          <tr>
+            <td>{{category.name}}</td>
+            
+            <td>{{category.description}}</td>
+            <td> <div class="btn btn-outline-success"><a href="">view</a></div></td>
+            <td><div class="btn btn-outline-danger">
+              <a href="">delete</a></div></td>
+          </tr>
+          {% endfor %}
+         
+          
+        </tbody>
+      </table>
+      
+    </div>
+
+{%endblock%}
