@@ -18,5 +18,6 @@ urlpatterns=[
     #categoryurls
     path('category/add',CategoryCreateView.as_view(),name='create-category'),
     path('category/',CategoryListView.as_view(),name='category-list'),
+    path('stock-list/category/',views.item_list,name='item-list'),
     
 ]

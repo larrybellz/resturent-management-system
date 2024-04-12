@@ -29,7 +29,7 @@
     <div class="container-fluid con ">
         
 
-        <h1 class="mb-6 text-2xl ">New Item</h1>
+        <h1 class="mb-6 text-2xl ">Update Item</h1>
         <form action="" method="post">
         {% csrf_token %}
         <div>
@@ -42,6 +42,13 @@
             <label><strong>Item Price</strong> </label>
             <br>
             {{form.price}}
+        
+        </div>
+        <br>
+        <div>
+            <label><strong>Categories</strong> </label>
+            <br>
+            {{form.category}}
         
         </div>
         <br>

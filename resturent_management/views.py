@@ -1,5 +1,6 @@
 from email import message
 from msilib.schema import ListView
+from multiprocessing import context
 from pyexpat import model
 from re import template
 from django.shortcuts import render,redirect
@@ -18,7 +19,7 @@ class StockListView(ListView):
     template_name='resturent_management/manage_products.html'
     context_object_name='items'
     ordering=['-pk']
-   # queryset= Stock.objects.all()
+    queryset= Stock.objects.all()
 
     
   #  def get_queryset(self):
@@ -26,9 +27,35 @@ class StockListView(ListView):
      #   categories=Category.objects.all()
        
     #    return list(zip(stocks,categories)),
+
     
 
+    def get_context_data(self,**kwargs):
+        context=super().get_context_data(**kwargs)
+        context['categories']=Category.objects.all()#add categories to the context
+        return context
+    
+
+
+
+    
+def item_list(request):
+    selected_category_id=request.GET.get('category')
+    if selected_category_id:
+        items=Stock.objects.filter(category_id=selected_category_id)
         
+
+
+    else:#to show all items if selected view all items
+        items=Stock.objects.all()
+    context={
+        'items':items,
+        'categories':Category.objects.all()
+
+    }
+    return render(request,'resturent_management/manage_products.html',context)
+
+
 
 
 class StockCreateView(CreateView):
@@ -70,7 +97,7 @@ class StockUpdateView(UpdateView):
     model=Stock
     template_name='resturent_management/update.html'
     form=UpdateForm
-    fields=['name','price','description']
+    fields=['name','price','description','category']
     success_url='/stock/'
 
    

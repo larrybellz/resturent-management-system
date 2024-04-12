@@ -6,30 +6,42 @@
    
     <div class=''>
         <a class="btn btn-primary" href="{%url 'createStock'%}">Add Product</a>
-        <div class="drop btn btn-primary">
+       <!--- <div class="drop btn btn-primary">
           <ul>
               <li>
                   <a href="#">Categories</a>
                   
                   <ul>
-                    {%for category in items%}
+                    {%for category in categories%}
                       <li><a href="">{{category.name}}</a></li>
                     {%endfor%}
-                      <li><a href="">cat1 catalogostic info</a></li>
-                      <li><a href="">cat1</a></li>
-                      <li><a href="">cat1</a></li>
+
                   </ul>
                   
   
               </li>
           </ul>
   
-        </div>
+        </div>-->
+        <div style="display:inline-block;">
+        <form action="{%url 'item-list'%}" method="get">
+          <select name="category" id="">
+            <option value="">select a category option</option>
+            <option value="">all items</option>
+            {%for category in categories%}
+            <option value="{{category.id}}">{{category.name}}</option>
+            {%endfor%}
+
+          </select>
+          <button  class='btn btn-outline-info' type="submit">View</button>
+        </form>
+      </div>
      
     </div>
     <br>
     <div class="container fluid padding-10px border">
         <h3>Manage Products</h3>
+        
         <br>
         
     <table class="table table-striped ">
