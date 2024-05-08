@@ -9,12 +9,15 @@ from django.views.generic import ListView,UpdateView,DeleteView,DetailView
 from .forms import AddItemForm,UpdateForm
 from django.views.generic.edit import CreateView
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def homeView(request):
-    return render(request,'resturent_management/manage_products.html')
+    return render(request,'resturent_management/index.html')
 
-class StockListView(ListView):
+class StockListView(LoginRequiredMixin,ListView):
+    login_url='/authentication/login/'
     model=Stock
     template_name='resturent_management/manage_products.html'
     context_object_name='items'
@@ -38,7 +41,7 @@ class StockListView(ListView):
 
 
 
-    
+@login_required
 def item_list(request):
     selected_category_id=request.GET.get('category')
     if selected_category_id:
@@ -58,7 +61,8 @@ def item_list(request):
 
 
 
-class StockCreateView(CreateView):
+class StockCreateView(LoginRequiredMixin,CreateView):
+    login_url='/authentication/login/'
     model=Stock
     template_name='resturent_management/additem.html'
     form=AddItemForm
@@ -77,7 +81,8 @@ class StockCreateView(CreateView):
         return super().form_valid(form)
         
 
-class StockDeleteView(DeleteView):
+class StockDeleteView(LoginRequiredMixin,DeleteView):
+    login_url='/authentication/login/'
     model=Stock
     success_url='/stock/'
     context_object_name='item'
@@ -87,13 +92,15 @@ class StockDeleteView(DeleteView):
        
         
 
-class StockDetailView(DetailView):
+class StockDetailView(LoginRequiredMixin,DetailView):
+    login_url='/authentication/login/'
     model=Stock
     context_object_name='item'
     success_url='/stock/'
     template_name='resturent_management/stock_detail.html'
     
-class StockUpdateView(UpdateView):
+class StockUpdateView(LoginRequiredMixin,UpdateView):
+    login_url='/authentication/login/'
     model=Stock
     template_name='resturent_management/update.html'
     form=UpdateForm
@@ -102,7 +109,8 @@ class StockUpdateView(UpdateView):
 
    
 
-class CategoryListView(ListView):
+class CategoryListView(LoginRequiredMixin,ListView):
+    login_url='/authentication/login/'
     model=Category
     template_name='resturent_management/categoryList.html'
     context_object_name='categories'
@@ -112,7 +120,8 @@ class CategoryListView(ListView):
     def get_queryset(self):
         return Category.objects.all()
 
-class CategoryCreateView(CreateView):
+class CategoryCreateView(LoginRequiredMixin,CreateView):
+    login_url='/authentication/login/'
     model=Category
     template_name='resturent_management/addcategory.html'
     form=AddItemForm

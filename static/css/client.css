@@ -1,0 +1,17 @@
+
+.showcase{
+    width: 100%;
+    height: 200px;
+    margin-bottom: 15px;
+    background-image: url('../img/fm1.png');
+}
+.dish-info{
+    padding:0px 15px;
+}
+@media (max-width:510px) {
+    .showcase h1{
+        font-size: large;
+    }
+
+    
+}

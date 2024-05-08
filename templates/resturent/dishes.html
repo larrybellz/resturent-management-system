@@ -1,0 +1,45 @@
+
+   {%extends 'client_base.html'%}
+   {%load static%}
+   {%block content%}
+   <div class="container-fluid cards">
+    <h2 class="title">Available Food Dishes</h2>
+        {%for dish in dishes %}
+        <div class="card bg-dark dish">
+            <div class="plate">
+            <img class='img-fluid rounded' src="{% static 'img/fm1.png'%}">
+            </div>
+            <div class="dish-info">
+                
+                <h6 style="border-bottom:1px solid white ;">{{dish.name}}</h6>
+                <p class="dish-description">{{dish.description}}</p>
+                <form method="post" action="{%url 'order'%}">
+                    {%csrf_token%}
+                    <button value='submit'class="btn btn-outline-danger">ORDER NOW!</button>
+                </form>
+            
+
+            </div>
+           
+        
+        </div>
+        {%endfor%}
+        <div class="pagination">
+            <span class="step-links">
+            {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+            <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+            {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+        </div>           
+        
+    </div>
+    {%endblock%}
+ 

@@ -1,0 +1,31 @@
+body{
+	padding: 0;
+	margin: none;
+	font-size: 15px;
+	font-family: sans-serif;
+}
+section{
+	width: 300px;
+	height: 400px;
+	margin: auto;
+	background-color:whitesmoke;
+	padding-top:50px;
+	position: relative;
+	top: 100px;
+	border-radius:15px ;
+}
+.mycontainer{
+	width: 230px;
+	margin: auto;
+}
+form input{
+	padding: 10px 65px 5px 5px;
+	margin-top:20px ;
+	border-radius:15px ;
+	border: none;
+}
+#signUp{
+	padding: 10px 90px;
+	background-color: #000099;
+}
+

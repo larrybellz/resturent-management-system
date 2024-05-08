@@ -1,0 +1,76 @@
+{%extends 'base.html'%}
+{%block content%}
+
+    <h1>Manage <small>Products</small></h1>
+    
+   
+    <div class=''>
+        <a class="btn btn-primary" href="{%url 'createStock'%}">Add Product</a>
+       <!--- <div class="drop btn btn-primary">
+          <ul>
+              <li>
+                  <a href="#">Categories</a>
+                  
+                  <ul>
+                    {%for category in categories%}
+                      <li><a href="">{{category.name}}</a></li>
+                    {%endfor%}
+
+                  </ul>
+                  
+  
+              </li>
+          </ul>
+  
+        </div>-->
+        <div style="display:inline-block;">
+        <form action="{%url 'item-list'%}" method="get">
+          <select name="category" id="">
+            <option value="">select a category option</option>
+            <option value="">all items</option>
+            {%for category in categories%}
+            <option value="{{category.id}}">{{category.name}}</option>
+            {%endfor%}
+
+          </select>
+          <button  class='btn btn-outline-info' type="submit">View</button>
+        </form>
+      </div>
+     
+    </div>
+    <br>
+    <div class="container fluid padding-10px border">
+        <h3>Manage Products</h3>
+        
+        <br>
+        
+    <table class="table table-striped ">
+        <thead>
+          <tr>
+            <th>name</th>
+            <th>price</th>
+            <th>description</th>
+            <th>status</th>
+            <th>action</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in items %}
+          <tr>
+            <td>{{item.name}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.description}}</td>
+            <td> <div class="btn btn-outline-success"><a href="{%url 'stock-detail' item.id%}">view</a></div></td>
+            <td><div class="btn btn-outline-danger">
+              <a href="{%url 'delete' item.id %}">delete</a></div></td>
+          </tr>
+          {% endfor %}
+         
+          
+        </tbody>
+      </table>
+      
+    </div>
+
+{%endblock%}

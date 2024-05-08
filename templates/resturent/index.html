@@ -1,0 +1,50 @@
+
+
+{%extends 'client_base.html'%}
+{%load static%}
+
+{%block style%}
+<style>
+    .info{
+	
+	
+	font-size: 15px;
+
+    display: grid;
+	justify-self: center;
+	align-items: center;
+
+}
+
+
+.info .name{
+	font-size: 3.5em;
+	font-weight: bold;
+	color: navy;
+}
+.info h2{
+	color: #079752;}
+</style>
+{%endblock%}
+
+{%block content%}
+
+<div class="row ">
+    <div class="col-md-6 col-lg-6 info">
+        <div class="container" >
+            <h2>Our Special Dish</h2>
+            <p class="name">Fried Chicken</p>
+            <p>Lorem Ipsum DOlor Sit Amet Consectetur Adipisicing elt.Sit dolor Cumque?</p>
+            <form>
+                <button class="btn btn-outline-danger" value="">Order Now</button>
+            </form>
+        
+        </div>
+        
+    </div>
+    <div class="col-md-6 col-lg-6">
+        <img class='img-responsive img-circle' style='max-width: 80%;'src="{% static 'img/fm1.png'%}" >
+    </div>
+    
+</div>
+{%endblock%}        

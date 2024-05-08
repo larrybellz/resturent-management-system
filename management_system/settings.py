@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'resturent_management',
-    'authenticate'
+    'authenticate',
+    'staff_management',
+    'resturent',
     
 ]
 
