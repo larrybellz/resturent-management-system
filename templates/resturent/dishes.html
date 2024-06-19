@@ -1,25 +1,29 @@
 
    {%extends 'client_base.html'%}
    {%load static%}
+
    {%block content%}
    <div class="container-fluid cards">
     <h2 class="title">Available Food Dishes</h2>
         {%for dish in dishes %}
         <div class="card bg-dark dish">
-            <div class="plate">
-            <img class='img-fluid rounded' src="{% static 'img/fm1.png'%}">
-            </div>
-            <div class="dish-info">
-                
-                <h6 style="border-bottom:1px solid white ;">{{dish.name}}</h6>
-                <p class="dish-description">{{dish.description}}</p>
-                <form method="post" action="{%url 'order'%}">
-                    {%csrf_token%}
-                    <button value='submit'class="btn btn-outline-danger">ORDER NOW!</button>
-                </form>
             
+                <div class="plate">
+                    
+                    <img class=' rounded' src="{{dish.image.url}}" height="146px"width='100%' alt="dish image">
+                </div>
+                <div class="dish-info">
+                    
+                    <h6 style="border-bottom:1px solid white ;">{{dish.name}}</h6>
+                    <p class="dish-description">{{dish.description}}</p>
+                    <form method="post" action="{%url 'order'%}">
+                        {%csrf_token%}
+                        <button value='submit'class="btn btn-outline-danger order_btn">ORDER NOW!</button>
+                    </form>
+                
 
-            </div>
+                </div>
+            
            
         
         </div>

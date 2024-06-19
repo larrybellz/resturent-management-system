@@ -1,7 +1,7 @@
 from ast import Return
 from multiprocessing import context
-import re
-from django.shortcuts import render
+from .models import Order,Client
+from django.shortcuts import render,redirect
 from django.views.generic import ListView,UpdateView,DeleteView,DetailView
 from django.db import models
 from resturent_management.models import Stock,Category
@@ -29,10 +29,16 @@ class CategoryListView(ListView):
     template_name='resturent/categories.html'
     context_object_name='categories'
     ordering=['-pk']
-def makeOrder(request):
+def makeOrder(request,pk):
+
+    
     if request.method=='POST':
+        myorder=Order()
+        selected_dish=Stock.objects.get(id=id)
+        myorder.dish_name=selected_dish.kj
         print('JUST ORDERED')
-    context={
-        'dishes':Stock.objects.all()
-    }
-    return render(request,'resturent/dishes.html',context)
+
+    return redirect('dish-list')
+
+
+    

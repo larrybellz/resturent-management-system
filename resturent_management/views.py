@@ -3,6 +3,7 @@ from msilib.schema import ListView
 from multiprocessing import context
 from pyexpat import model
 from re import template
+from urllib import request
 from django.shortcuts import render,redirect
 from .models import StockItem,Category,Stock
 from django.views.generic import ListView,UpdateView,DeleteView,DetailView
@@ -65,8 +66,8 @@ class StockCreateView(LoginRequiredMixin,CreateView):
     login_url='/authentication/login/'
     model=Stock
     template_name='resturent_management/additem.html'
-    form=AddItemForm
-    fields=['name','price','description','category']
+    form=AddItemForm()
+    fields=['name','price','description','category','image']
     success_url='/stock/'
     
     def get_success_message(self,request):
@@ -77,6 +78,7 @@ class StockCreateView(LoginRequiredMixin,CreateView):
     
 
     def form_valid(self,form ):
+        
         messages.add_message(self.request,messages.SUCCESS,'stock created')
         return super().form_valid(form)
         

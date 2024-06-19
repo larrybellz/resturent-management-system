@@ -4,7 +4,7 @@ from .models import Stock
 class AddItemForm(forms.Form):
     class Meta:
         model=Stock
-        fields=['name','price','description']
+        fields=['name','price','description','image']
     name=forms.CharField(widget=forms.TextInput(attrs={
         'placeholder':'Item name',
         'class':'itemName ',

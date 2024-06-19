@@ -6,7 +6,7 @@ urlpatterns=[
     path('home',views.index,name='home'),
     path('dishes',views.dishes),
     path('dish/',DishListView.as_view(),name='dish-list'),
-    path('categories/',CategoryListView.as_view(),name='category-list'),
+    path('categories/',CategoryListView.as_view(),name='client-category-list'),
     path('ordered',views.makeOrder,name='order'),
    
 ]
