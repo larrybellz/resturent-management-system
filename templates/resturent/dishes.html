@@ -1,49 +1,50 @@
+{%extends 'client_base.html'%}
+{%load static%}
 
-   {%extends 'client_base.html'%}
-   {%load static%}
+{%block content%}
 
-   {%block content%}
-   <div class="container-fluid cards">
+<div class="container-fluid cards">
     <h2 class="title">Available Food Dishes</h2>
-        {%for dish in dishes %}
-        <div class="card bg-dark dish">
-            
-                <div class="plate">
-                    
-                    <img class=' rounded' src="{{dish.image.url}}" height="146px"width='100%' alt="dish image">
-                </div>
-                <div class="dish-info">
-                    
-                    <h6 style="border-bottom:1px solid white ;">{{dish.name}}</h6>
-                    <p class="dish-description">{{dish.description}}</p>
-                    <form method="post" action="{%url 'order'%}">
-                        {%csrf_token%}
-                        <button value='submit'class="btn btn-outline-danger order_btn">ORDER NOW!</button>
-                    </form>
-                
 
-                </div>
-            
-           
-        
+    {%for dish in dishes %}
+    <div class="card bg-dark dish">
+
+
+        <div class="plate">
+
+            <img class=' rounded' src="{{dish.image.url}}" height="146px" width='100%' alt="dish image">
         </div>
-        {%endfor%}
-        <div class="pagination">
-            <span class="step-links">
+        <div class="dish-info">
+
+            <h6 style="border-bottom:1px solid white ;">{{dish.name}}</h6>
+            <p class="dish-description">{{dish.description}}</p>
+            <form method="post" action="{%url 'make-order' dish.id%}">
+                {%csrf_token%}
+                <button class="btn btn-outline-danger order_btn" type="submit">ORDER NOW!</button>
+            </form>
+
+
+        </div>
+
+
+
+    </div>
+    {%endfor%}
+    <div class="pagination">
+        <span class="step-links">
             {% if page_obj.has_previous %}
             <a href="?page=1">&laquo; first</a>
             <a href="?page={{ page_obj.previous_page_number }}">previous</a>
             {% endif %}
             <span class="current">
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
             </span>
             {% if page_obj.has_next %}
             <a href="?page={{ page_obj.next_page_number }}">next</a>
             <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
             {% endif %}
         </span>
-        </div>           
-        
     </div>
-    {%endblock%}
- 
+
+</div>
+{%endblock%}

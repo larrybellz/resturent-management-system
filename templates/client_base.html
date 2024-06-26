@@ -1,56 +1,61 @@
-
 {%load static%}
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>client</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>client</title>
 
-    <link href="{% static 'css/flaticon.css'%}" rel="stylesheet">
-     <link href="{% static 'css/client.css'%}" rel="stylesheet">
-    <link href="{% static 'css/css/bootstrap.min.css' %}" rel="stylesheet" >
-    {%block style%}
-    {%endblock%}
-    <style>
-    
- 
- </style>
-  
+  <link href="{% static 'css/flaticon.css'%}" rel="stylesheet">
+  <link href="{% static 'css/client.css'%}" rel="stylesheet">
+  <link href="{% static 'css/css/bootstrap.min.css' %}" rel="stylesheet">
+  {%block style%}
+  {%endblock%}
+  <style>
+
+
+  </style>
+
 </head>
-<body>
-<div class="container" style="min-height:100%;">
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="	box-shadow: 0 2px 10px black;z-index: 2;" aria-label="Tenth navbar example">
-    <div class="container-fluid">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      
 
-      <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'home'%}">home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'category-list'%}">categories</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " href="{% url 'dish-list'%}" aria-disabled="true">dishes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " href="{% url 'dish-list'%}" aria-disabled="true">orders</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " aria-disabled="true" data-toggle="modal" data-target="#ModalLogin">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link " aria-disabled="true" data-toggle="modal" data-target="#ModalRegister">Register</a>
-          </li>
-          
-          <!--<li class="nav-item dropdown ">
+<body>
+  <div class="container" style="min-height:100%;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="	box-shadow: 0 2px 10px black;z-index: 2;"
+      aria-label="Tenth navbar example">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample08"
+          aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'home'%}">home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'client-category-list'%}">categories</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="{% url 'dish-list'%}" aria-disabled="true">dishes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " href="{% url 'order-list'%}" aria-disabled="true">orders</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " aria-disabled="true" data-toggle="modal" data-target="#ModalLogin">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " aria-disabled="true" data-toggle="modal" data-target="#ModalRegister">Register</a>
+            </li>
+            <p><span></span>{{user}}<span class="btn btn-outline-danger">LogOut</span></p>
+            
+
+            <!--<li class="nav-item dropdown ">
             
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" >Dropdown</a>
             <ul class="dropdown-menu">
@@ -68,51 +73,55 @@
             </div>
           </div>
           </li>-->
-        </ul>
+          </ul>
+        </div>
       </div>
+    </nav>
+    <div class="container-fluid">
+      {% include 'partials/_messages.html' %}
+      <div class="showcase">
+        <h1>.RESTO- THE QUALITY FOOD YOU DESIRE</h1>
+        <p>We deliver quality. try us then buy us!</p>
+      </div>
+
+
+      {%block content%}
+      {%endblock%}
+
+      <div class="contact">
+
+      </div>
+
+
+
+
     </div>
-  </nav>
-  <div class="container-fluid">
-    <div class="showcase">
-      <h1>.RESTO- THE QUALITY FOOD YOU DESIRE</h1>
-      <p>We deliver quality. try us then buy us!</p>
-    </div>
-    
-
-    {%block content%}
-    {%endblock%}
-
-    <div class="contact">
-
-    </div>
-    
-
-
-    
   </div>
-</div>
 
   <footer class="footer">
     <div class="footer-newslatter bg-dark">
       <div class="container">
-          <div class="row">
-              <div class="col-md-12">
-                  <form>
-                      <i class="wmicon-interface2"></i>
-                      <input type="text" value="Enter your e-mail address" onblur="if(this.value == '') { this.value ='Enter your e-mail address'; }" onfocus="if(this.value =='Enter your e-mail address') { this.value = ''; }">
-                      <input type="submit" value="Subscribe to our newsletter">
-                  </form>
-              </div>
+        <div class="row">
+          <div class="col-md-12">
+            <form>
+              <i class="wmicon-interface2"></i>
+              <input type="text" value="Enter your e-mail address"
+                onblur="if(this.value == '') { this.value ='Enter your e-mail address'; }"
+                onfocus="if(this.value =='Enter your e-mail address') { this.value = ''; }">
+              <input type="submit" value="Subscribe to our newsletter">
+            </form>
           </div>
+        </div>
       </div>
-  </div>
+    </div>
   </footer>
 
-{%include 'partials/loginmodal.html'%}
-{%include 'partials/registermodal.html'%} 
+  {%include 'partials/loginmodal.html'%}
+  {%include 'partials/registermodal.html'%}
   <script src="{% static 'jquery.min.js'%}"></script>
   <script src="{% static 'js/bootstrap.min.js'%}"></script>
   <script src="{% static 'js/bootstrap.bundle.min.js'%}"></script>
 
 </body>
+
 </html>

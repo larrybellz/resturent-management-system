@@ -3,9 +3,10 @@ from msilib.schema import ListView
 from multiprocessing import context
 from pyexpat import model
 from re import template
+from tkinter import Menu
 from urllib import request
 from django.shortcuts import render,redirect
-from .models import StockItem,Category,Stock
+from .models import StockItem,Category,Stock,MenuItem
 from django.views.generic import ListView,UpdateView,DeleteView,DetailView
 from .forms import AddItemForm,UpdateForm
 from django.views.generic.edit import CreateView
@@ -19,11 +20,11 @@ def homeView(request):
 
 class StockListView(LoginRequiredMixin,ListView):
     login_url='/authentication/login/'
-    model=Stock
+    model=MenuItem
     template_name='resturent_management/manage_products.html'
     context_object_name='items'
-    ordering=['-pk']
-    queryset= Stock.objects.all()
+    
+    queryset= MenuItem.objects.all()
 
     
   #  def get_queryset(self):
@@ -46,12 +47,12 @@ class StockListView(LoginRequiredMixin,ListView):
 def item_list(request):
     selected_category_id=request.GET.get('category')
     if selected_category_id:
-        items=Stock.objects.filter(category_id=selected_category_id)
+        items=MenuItem.objects.filter(category_id=selected_category_id)
         
 
 
     else:#to show all items if selected view all items
-        items=Stock.objects.all()
+        items=MenuItem.objects.all()
     context={
         'items':items,
         'categories':Category.objects.all()
@@ -64,11 +65,11 @@ def item_list(request):
 
 class StockCreateView(LoginRequiredMixin,CreateView):
     login_url='/authentication/login/'
-    model=Stock
+    model=MenuItem
     template_name='resturent_management/additem.html'
     form=AddItemForm()
     fields=['name','price','description','category','image']
-    success_url='/stock/'
+    success_url='/management/stock/'
     
     def get_success_message(self,request):
         messages.add_message(request,)
@@ -85,8 +86,8 @@ class StockCreateView(LoginRequiredMixin,CreateView):
 
 class StockDeleteView(LoginRequiredMixin,DeleteView):
     login_url='/authentication/login/'
-    model=Stock
-    success_url='/stock/'
+    model=Menu
+    success_url='/management/stock/'
     context_object_name='item'
     template_name='resturent_management/deleteConfirm.html'
 
@@ -96,18 +97,18 @@ class StockDeleteView(LoginRequiredMixin,DeleteView):
 
 class StockDetailView(LoginRequiredMixin,DetailView):
     login_url='/authentication/login/'
-    model=Stock
+    model=MenuItem
     context_object_name='item'
-    success_url='/stock/'
+    success_url='/management/stock/'
     template_name='resturent_management/stock_detail.html'
     
 class StockUpdateView(LoginRequiredMixin,UpdateView):
     login_url='/authentication/login/'
-    model=Stock
+    model=MenuItem
     template_name='resturent_management/update.html'
     form=UpdateForm
     fields=['name','price','description','category']
-    success_url='/stock/'
+    success_url='/management/stock/'
 
    
 
@@ -128,7 +129,7 @@ class CategoryCreateView(LoginRequiredMixin,CreateView):
     template_name='resturent_management/addcategory.html'
     form=AddItemForm
     fields=['name','description']
-    success_url='/category/'
+    success_url='/management/category/'
     
     def get_success_message(self,request):
         messages.add_message(request,)

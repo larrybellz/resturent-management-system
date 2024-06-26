@@ -1,9 +1,9 @@
 from dataclasses import fields
 from django import forms
-from .models import Stock
+from .models import Stock,MenuItem
 class AddItemForm(forms.Form):
     class Meta:
-        model=Stock
+        model=MenuItem
         fields=['name','price','description','image']
     name=forms.CharField(widget=forms.TextInput(attrs={
         'placeholder':'Item name',
@@ -23,7 +23,7 @@ class AddItemForm(forms.Form):
 
 class UpdateForm(forms.Form):
     class Meta:
-        model=Stock
+        model=MenuItem
         fields=['name','price','description']
 
     name=forms.CharField(widget=forms.TextInput(attrs={

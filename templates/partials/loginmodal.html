@@ -1,45 +1,36 @@
-
 <div class="modal fade" id="ModalLogin" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            
-            
+
+
             <span class="wm-color">Login to Your Account</span>
-            <form>
+            <form action="{%url 'client-user-login'%}" method="post">
+                {%csrf_token%}
+
 
                 <div class="form-group">
-                    <input 
-                    type="text" 
-                    name="username" 
-                    id="usernameField" 
-                    
-                    class="form-control form-control-sm"
-                    value="Enter your username"
-                    onblur="if (this.value==''){this.value='Enter your username'} "
-                    onfocus="if(this.value=='Enter your username'){this.value=''}">
-                    
-            
-            
-                    
+                    <input type="text" name="username" id="usernameField" class="form-control form-control-sm"
+                        value="Enter your username" onblur="if (this.value==''){this.value='Enter your username'} "
+                        onfocus="if(this.value=='Enter your username'){this.value=''}">
+
+
+
+
                 </div>
                 <div class="form-group">
-                    <input 
-                    type="password" 
-                    name="password" 
-                    id="passwordField" 
-                    placeholder="enter your password"
-                    class="form-control form-control-sm">
-                    
+                    <input type="password" name="password" id="passwordField" placeholder="enter your password"
+                        class="form-control form-control-sm">
+
                 </div>
                 <small class="float-right md-10" id="showbtn">SHOW</small>
-                    
+
                 <p>Not a member?
                     <a href="#">Register Now</a>
-                    
+
                 </p>
                 <input type="submit" value="login" class="btn btn-block btn-primary md-5 submit-btn">
             </form>
-            
+
         </div>
     </div>
 </div>

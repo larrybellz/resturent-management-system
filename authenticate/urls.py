@@ -8,5 +8,7 @@ urlpatterns=[
     path('validate-username/',csrf_exempt(UsernameValidationView.as_view()),name='validate-username'),
     path('validate-email/',csrf_exempt(EmailValidationView.as_view()),name='validate-username'),
     path('login/',LoginView.as_view(),name='login'),
-    path('logout/',LogoutView.as_view(),name='logout')
+    path('logout/',LogoutView.as_view(),name='logout'),
+    path('client-registration/',views.client_registration,name='client-user-registration'),
+    path('client-login/',views.ClientLogin,name='client-user-login')
 ]
